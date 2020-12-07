@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/HabitTracker/static/css/main.74ab0410.chunk.css",
+    "main.js": "/HabitTracker/static/js/main.f4c1a233.chunk.js",
+    "main.js.map": "/HabitTracker/static/js/main.f4c1a233.chunk.js.map",
+    "runtime-main.js": "/HabitTracker/static/js/runtime-main.f4cbfa4c.js",
+    "runtime-main.js.map": "/HabitTracker/static/js/runtime-main.f4cbfa4c.js.map",
+    "static/css/2.f0fce20c.chunk.css": "/HabitTracker/static/css/2.f0fce20c.chunk.css",
+    "static/js/2.8ce20ce7.chunk.js": "/HabitTracker/static/js/2.8ce20ce7.chunk.js",
+    "static/js/2.8ce20ce7.chunk.js.map": "/HabitTracker/static/js/2.8ce20ce7.chunk.js.map",
+    "static/js/3.a02a018e.chunk.js": "/HabitTracker/static/js/3.a02a018e.chunk.js",
+    "static/js/3.a02a018e.chunk.js.map": "/HabitTracker/static/js/3.a02a018e.chunk.js.map",
+    "index.html": "/HabitTracker/index.html",
+    "service-worker.js": "/HabitTracker/service-worker.js",
+    "service-worker.js.map": "/HabitTracker/service-worker.js.map",
+    "static/css/2.f0fce20c.chunk.css.map": "/HabitTracker/static/css/2.f0fce20c.chunk.css.map",
+    "static/css/main.74ab0410.chunk.css.map": "/HabitTracker/static/css/main.74ab0410.chunk.css.map",
+    "static/js/2.8ce20ce7.chunk.js.LICENSE.txt": "/HabitTracker/static/js/2.8ce20ce7.chunk.js.LICENSE.txt",
+    "static/media/LogInSideImage.191c5a3f.jpeg": "/HabitTracker/static/media/LogInSideImage.191c5a3f.jpeg",
+    "static/media/SignUp.191c5a3f.jpeg": "/HabitTracker/static/media/SignUp.191c5a3f.jpeg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f4cbfa4c.js",
+    "static/css/2.f0fce20c.chunk.css",
+    "static/js/2.8ce20ce7.chunk.js",
+    "static/css/main.74ab0410.chunk.css",
+    "static/js/main.f4c1a233.chunk.js"
+  ]
+}
