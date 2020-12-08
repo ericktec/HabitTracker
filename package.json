@@ -2,7 +2,7 @@
   "name": "habittracker",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ericktec.github.io/HabitTracker",
+  "homepage": "https://ericktec.github.io/HabitTracker/",
   "dependencies": {
     "@fullcalendar/core": "^5.4.0",
     "@fullcalendar/daygrid": "^5.4.0",

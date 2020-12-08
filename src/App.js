@@ -11,7 +11,7 @@ import PrivateRoute from './containers/PrivateRoute';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/HabitTracker">
       <AuthProvider>
         <Switch>
           <Route exact path='/' component={LogIn}/>
