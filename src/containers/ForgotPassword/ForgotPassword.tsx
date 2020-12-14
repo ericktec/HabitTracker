@@ -1,33 +1,35 @@
-import React, { useState } from "react";
+import React, { InputHTMLAttributes, Provider, useState } from "react";
 import LogInSideImage from "./LogInSideImage.jpeg";
 import "./LogIn.css";
 import { useAuth } from '../../contexts/AuthContext';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { EventInput } from "@fullcalendar/react";
 
-function LogIn() {
-  
+export default function ForgotPassword() {
+
   const [userInfo, setUserInfo] = useState({
     email: "",
-    password: ""
   });
-  const history = useHistory();
-  const { login } = useAuth();
+  const { resetPassword }: any = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
 
-  const onChangeInput = (e) => {
+  const onChangeInput = (e:EventInput) => {
     const { name , value } = e.target;
     setUserInfo({...userInfo, [name]: value});
   };
 
-  async function submtiHandler(e) {
+  async function submtiHandler(e:React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if(userInfo.email && userInfo.password){
+    if(userInfo.email){
       try {
         setLoading(true);
-        await login(userInfo.email, userInfo.password);
-        return history.push('/tracking');
+        console.log("holaaaaa");
+        await resetPassword(userInfo.email);
+        setMessage('Revisa tu email para restablecer tu contraseña');
       } catch (error) {
+        setMessage("Hubo un error al restablecer tu contraseña");
         setError(error);
       }
       setLoading(false);
@@ -35,20 +37,18 @@ function LogIn() {
     console.log(userInfo);
   }
 
+
   return (
     <div className="logInBody">
       <img src={LogInSideImage} alt="LogIn" />
       <div className="formContainer">
         <form className="logInForm" onSubmit={submtiHandler}>
-          <p>{error}</p>
           <label>Correo electronico </label>
           <input name="email"  onChange={onChangeInput} type="text" />
-          <label>Contraseña </label>
-          <input name="password" onChange={onChangeInput} type="password"/>
-          <button disabled={loading} type='submit' className="LogInButton">Iniciar Sesión</button>
-          <Link to="/signUp"><button className="SignUpButton">Registrarse</button></Link>
+          <label>{message}</label>
+          <button disabled={loading} type='submit' className="LogInButton">Reiniciar contraseña</button>
           <br/>
-          <Link to="/forgot-password" className="forgetPassword">¿Olvidaste tu contraseña?</Link>
+          <Link to="/" className="forgetPassword">Iniciar sesión</Link>
         </form>
         <div>
         </div>
@@ -56,5 +56,3 @@ function LogIn() {
     </div>
   );
 }
-
-export default LogIn;

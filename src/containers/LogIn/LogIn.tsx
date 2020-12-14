@@ -2,33 +2,34 @@ import React, { useState } from "react";
 import LogInSideImage from "./LogInSideImage.jpeg";
 import "./LogIn.css";
 import { useAuth } from '../../contexts/AuthContext';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { EventInput } from "@fullcalendar/react";
+import firebase from 'firebase'
 
-export default function ForgotPassword() {
-
+function LogIn() {
+  
   const [userInfo, setUserInfo] = useState({
     email: "",
+    password: ""
   });
-  const { resetPassword } = useAuth();
+  const history = useHistory();
+  const { login }:any = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState('');
 
-  const onChangeInput = (e) => {
+  const onChangeInput = (e:EventInput) => {
     const { name , value } = e.target;
     setUserInfo({...userInfo, [name]: value});
   };
 
-  async function submtiHandler(e) {
+  async function submtiHandler(e:React.FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault();
-    if(userInfo.email){
+    if(userInfo.email && userInfo.password){
       try {
         setLoading(true);
-        console.log("holaaaaa");
-        await resetPassword(userInfo.email);
-        setMessage('Revisa tu email para restablecer tu contraseña');
+        await login(userInfo.email, userInfo.password);
+        return history.push('/tracking');
       } catch (error) {
-        setMessage("Hubo un error al restablecer tu contraseña");
         setError(error);
       }
       setLoading(false);
@@ -36,18 +37,20 @@ export default function ForgotPassword() {
     console.log(userInfo);
   }
 
-
   return (
     <div className="logInBody">
       <img src={LogInSideImage} alt="LogIn" />
       <div className="formContainer">
         <form className="logInForm" onSubmit={submtiHandler}>
+          <p>{error}</p>
           <label>Correo electronico </label>
           <input name="email"  onChange={onChangeInput} type="text" />
-          <label>{message}</label>
-          <button disabled={loading} type='submit' className="LogInButton">Reiniciar contraseña</button>
+          <label>Contraseña </label>
+          <input name="password" onChange={onChangeInput} type="password"/>
+          <button disabled={loading} type='submit' className="LogInButton">Iniciar Sesión</button>
+          <Link to="/signUp"><button className="SignUpButton">Registrarse</button></Link>
           <br/>
-          <Link to="/" className="forgetPassword">Iniciar sesión</Link>
+          <Link to="/forgot-password" className="forgetPassword">¿Olvidaste tu contraseña?</Link>
         </form>
         <div>
         </div>
@@ -55,3 +58,5 @@ export default function ForgotPassword() {
     </div>
   );
 }
+
+export default LogIn;

@@ -7,9 +7,10 @@ import UpdateProfile from './containers/UpdateProfile/UpdateProfile';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import {AuthProvider} from './contexts/AuthContext';
 import PrivateRoute from './containers/PrivateRoute';
+import { ReactElement } from 'react';
 
 
-function App() {
+function App(): ReactElement {
   return (
     <Router basename="/HabitTracker">
       <AuthProvider>
@@ -22,7 +23,6 @@ function App() {
         </Switch>
       </AuthProvider>
     </Router>
-
   );
 }
 
